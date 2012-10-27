@@ -8,7 +8,7 @@
         <div id='links'>
           votes:   <%= link.votes.where(:up => true).count  %>
           <%= link_to "↑", votes_path(:vote => {:link_id => link.id, :up => true}), :method => :post %>
-          || <%= link_to link.title, link.url %>
+           <%= link_to link.title, link.url %>
         </div>
       </li>
   <% end %>
