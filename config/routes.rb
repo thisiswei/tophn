@@ -1,4 +1,6 @@
 Linksgram::Application.routes.draw do
+  resources :votes, :only => [:create]
+
   devise_for :users
 
   resources :pages

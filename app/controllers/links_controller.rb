@@ -10,7 +10,10 @@ class LinksController < ApplicationController
   end
 
   def create
-    @link = Link.create(params[:link])
+    @user = User.find_by_username(params[:username])
+    @link = Link.new(params[:link])
+    @link.user_id = @user.id
+    @link.save
     redirect_to pages_url
   end
 end

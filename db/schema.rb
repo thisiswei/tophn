@@ -43,9 +43,9 @@ ActiveRecord::Schema.define(:version => 20121027184455) do
   create_table "votes", :force => true do |t|
     t.integer  "user_id"
     t.integer  "link_id"
-    t.boolean  "up"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.boolean  "up",         :default => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
   end
 
 end

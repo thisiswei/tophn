@@ -4,7 +4,9 @@
 
 <ul>
   <% @links.each do |link| %>
-      <ul ><%= link_to link.title, link.url %> </ul>
+
+
+  <ul >votes: <%= link.votes.where(:up => true).count  %> <%= link_to "↑", votes_path(:vote => {:link_id => link.id, :up => true}), :method => :post %> || <%= link_to link.title, link.url %> </ul>
   <% end %>
 </ul>
 <%= will_paginate @links %>
