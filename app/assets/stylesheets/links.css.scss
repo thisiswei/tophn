@@ -1,3 +1,11 @@
 // Place all the styles related to the links controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.odd {
+  background: rgba(0, 0, 0, 0.29)
+}
+#links {
+  background: rgba(214, 178, 226, 0.46);
+  text-align: center;
+  font-size: 1.2em;
+}

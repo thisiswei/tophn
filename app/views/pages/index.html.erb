@@ -4,9 +4,13 @@
 
 <ul>
   <% @links.each do |link| %>
-
-
-  <ul >votes: <%= link.votes.where(:up => true).count  %> <%= link_to "↑", votes_path(:vote => {:link_id => link.id, :up => true}), :method => :post %> || <%= link_to link.title, link.url %> </ul>
+      <li class="<%= cycle('odd','')%>">
+        <div id='links'>
+          votes:   <%= link.votes.where(:up => true).count  %>
+          <%= link_to "↑", votes_path(:vote => {:link_id => link.id, :up => true}), :method => :post %>
+          || <%= link_to link.title, link.url %>
+        </div>
+      </li>
   <% end %>
 </ul>
 <%= will_paginate @links %>
