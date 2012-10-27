@@ -1,1 +1,12 @@
 <h2> Linksgram</h2>
+
+
+
+<ul>
+  <% @links.each do |link| %>
+      <ul ><%= link_to link.title, link.url %> </ul>
+  <% end %>
+</ul>
+<%= will_paginate @links %>
+
+<%= link_to "add link", new_link_path %>
