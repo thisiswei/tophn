@@ -1,3 +1,56 @@
 // Place all the styles related to the pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+// Place all the styles related to the links controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#short_url{
+  font-size: 0.7em;
+}
+.notice{
+  background-color: red
+}
+.odd {
+  background: rgba(165, 165, 159, 0.27)
+}
+#links {
+  background: rgba(244, 244, 234, 0.44);
+  font-size: 1.1em;
+}
+#title{
+  font-size: 0.97em;
+  color: #a52a2a;
+  text-align: left;
+}
+
+
+ol {
+  background-color: #f5f5eb;
+}
+
+
+
+
+a:hover {
+  background-color: rgba(246, 219, 197, 0.43);
+}
+a:visited{
+  color: #3784a5;
+}
+span#vote {
+  font-size: 0.8em;
+  font-family: Verdana;
+}
+
+#points{
+  font-size: 0.6em;
+}
+.field {
+  font-size: 1.3em;
+  background-color: #f5f8ff;
+}
+
+h2{
+  font-family: Verdana;
+}

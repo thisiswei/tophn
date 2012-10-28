@@ -2,7 +2,7 @@
 <li class="<%= cycle('odd','')%>">
   <div id='links'>
     <div id='title'>
-      <%= link_to link.title, link.url %> <%= short_url(link.url) %>
+      <%= link_to link.title, link.url %> <span id='short_url'><%= short_url(link.url) %> </span>
     </div>
     <span id='vote'>
       <%= link_to "↑", votes_path(:vote => {:link_id => link.id, :up => true}), :method => :post, remote: true %>

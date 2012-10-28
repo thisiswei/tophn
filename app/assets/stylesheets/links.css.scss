@@ -1,6 +1,13 @@
 // Place all the styles related to the links controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#short_url{
+  font-size: 0.7em;
+}
+.notice{
+  background-color: red
+}
 .odd {
   background: rgba(165, 165, 159, 0.27)
 }
@@ -11,7 +18,7 @@
 #title{
   font-size: 0.97em;
   color: #a52a2a;
-  text-align: center;
+  text-align: left;
 }
 
 

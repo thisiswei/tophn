@@ -5,8 +5,11 @@ class Link < ActiveRecord::Base
   scope :top, lambda{ Link.all.sort_by{|l| l.votes.count}.reverse}
 
   before_save :format_url
-  validates_uniqueness_of :url
-  validates_uniqueness_of :title
+  validates :title, :uniqueness => true
+  validates :url, :uniqueness => true
+
+  validates :url,:title, :presence => {:message => 'Name cannot be blank, Task not saved'}
+
 
 
   private

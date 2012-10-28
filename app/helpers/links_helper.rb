@@ -1,6 +1,6 @@
 module LinksHelper
   def short_url(url)
-
+    url.split('/')[2]
   end
 
   def username(id)

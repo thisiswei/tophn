@@ -10,7 +10,13 @@ class LinksController < ApplicationController
   end
 
   def create
-    @link = current_user.links.create(params[:link])
-    redirect_to pages_path
+    @link = current_user.links.new(params[:link])
+    if Link.find_by_url(params[:link][:url]).nil?
+      @link.save
+      redirect_to pages_path
+    else
+      flash[:notice] = 'sorry...posted already'
+      redirect_to new_link_path
+    end
   end
 end
