@@ -1,3 +1,5 @@
+REGG=/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/ix
+
 class Link < ActiveRecord::Base
   attr_accessible :title, :url
   belongs_to :user
@@ -9,8 +11,6 @@ class Link < ActiveRecord::Base
   validates :url, :uniqueness => true
 
   validates :url,:title, :presence => {:message => 'Name cannot be blank, Task not saved'}
-
-
 
   private
      def format_url
