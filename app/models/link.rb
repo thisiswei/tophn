@@ -8,6 +8,7 @@ class Link < ActiveRecord::Base
   validates_uniqueness_of :url
   validates_uniqueness_of :title
 
+
   private
      def format_url
        self.url = 'http://'<<self.url unless self.url.include?('http://') or self.url.include?('https://')

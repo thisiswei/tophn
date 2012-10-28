@@ -2,16 +2,16 @@
 <li class="<%= cycle('odd','')%>">
   <div id='links'>
     <div id='title'>
-      <%= link_to link.title, link.url %>
+      <%= link_to link.title, link.url %> <%= short_url(link.url) %>
     </div>
     <span id='vote'>
       <%= link_to "↑", votes_path(:vote => {:link_id => link.id, :up => true}), :method => :post, remote: true %>
     </span>
     <span id='points'>
       <%= link.votes.count %> points
-      <%= time_ago_in_words link.created_at  %>
+      <%= time_ago_in_words link.created_at %> by <%= username(link.user_id) %>
+
     </span>
 
   </div>
 </li>
-
