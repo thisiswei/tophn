@@ -11,3 +11,8 @@
  *= require_self
  *= require_tree .
  */
+
+.sign{
+    text-align: right;
+    font-size: 0.8em;
+}

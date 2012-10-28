@@ -9,13 +9,15 @@
 <body>
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
-<% if current_user.present? %>
-    <%= link_to 'Sign Out', destroy_user_session_path, :method => :delete %>
+<div class="sign">
+  <% if current_user.present? %>
+      <%= link_to 'Sign Out', destroy_user_session_path, :method => :delete %>
+  <% else %>
+      <%= link_to 'Sign In', new_user_session_path %> |
+      <%= link_to 'Register Now!', new_user_registration_path %>
+  <% end %>
+</div>
 
-<% else %>
-    <%= link_to 'Sign In', new_user_session_path %> |
-    <%= link_to 'Register Now!', new_user_registration_path %>
-<% end %>
 
 <%=  yield %>
 

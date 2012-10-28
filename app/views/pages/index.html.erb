@@ -1,10 +1,9 @@
-<h2> Linksgram</h2>
-<ul>
+
+<ol>
   <div class="ajax">
     <%= render @links %>
   </div>
-
-</ul>
+</ol>
 <%= will_paginate @links %>
 
 <%= link_to "add link", new_link_path %>

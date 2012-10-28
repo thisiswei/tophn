@@ -1,9 +1,17 @@
 
 <li class="<%= cycle('odd','')%>">
   <div id='links'>
-    votes: <%= link.votes.where(:up => true).count %>
-    <%= link_to "↑", votes_path(:vote => {:link_id => link.id, :up => true}), :method => :post, remote: true %>
-    <%= link_to link.title, link.url %>
+    <div id='title'>
+      <%= link_to link.title, link.url %>
+    </div>
+    <span id='vote'>
+      <%= link_to "↑", votes_path(:vote => {:link_id => link.id, :up => true}), :method => :post, remote: true %>
+    </span>
+    <span id='points'>
+      <%= link.votes.where(:up => true).count %> points
+      <%= time_ago_in_words link.created_at  %>
+    </span>
+
   </div>
 </li>
 
