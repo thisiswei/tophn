@@ -13,4 +13,10 @@ h2 {
   text-align: center;
   font-size: 1.2em;
 }
-ul li{list-style: none; padding:10px 0;  clear:both; }
+ul li{
+  list-style: none; padding:10px 0;  clear:both;
+}
+
+a:hover {
+  background-color: #c8a2ae;
+}

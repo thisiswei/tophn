@@ -3,9 +3,11 @@ class VotesController < ApplicationController
   end
 
   def create
+    @links = Link.paginate(:page => params[:page], :per_page => 30)
     @vote = current_user.votes.create(params[:vote])
-    redirect_to pages_path
-
-
-  end
+    respond_to do |format|
+        format.html{redirect_to pages_path}
+        format.js
+      end
+    end
 end
