@@ -3,7 +3,7 @@ class VotesController < ApplicationController
   end
 
   def create
-    @links = Link.paginate(:page => params[:page], :per_page => 30)
+    @links = Link.all.sort_by{|l| l.votes.count}.reverse
     @vote = Vote.where(:link_id => params[:vote][:link_id], :user_id => current_user.id).first
     if @vote
       @vote.up = params[:vote][:up]

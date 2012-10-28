@@ -8,7 +8,7 @@
       <%= link_to "↑", votes_path(:vote => {:link_id => link.id, :up => true}), :method => :post, remote: true %>
     </span>
     <span id='points'>
-      <%= link.votes.where(:up => true).count %> points
+      <%= link.votes.count %> points
       <%= time_ago_in_words link.created_at  %>
     </span>
 
