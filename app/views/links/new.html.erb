@@ -11,17 +11,23 @@
           </ul>
         </div>
     <% end %>
-    <h2>only submit really shit</h2>
+    <div id = 'submit_form'>
+      <h2>SHOW ME WHAT'S POPING</h2>
 
-    <div class="field">
-      <%= f.label :title %><br />
-      <%= f.text_field :title %>
+      <div class="field">
+        <%= f.label :title %><br />
+        <%= f.text_field :title %>
+      </div>
+      <div class="field">
+        <%= f.label :url %><br />
+        <%= f.text_field :url %>
+      </div>
+      <div class="actions">
+        <%= f.submit %>
+      </div>
+
     </div>
-    <div class="field">
-      <%= f.label :url %><br />
-      <%= f.text_field :url %>
-    </div>
-    <div class="actions">
-      <%= f.submit %>
-    </div>
+
 <% end %>
+
+<%= link_to 'Home', pages_path %>
