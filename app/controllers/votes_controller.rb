@@ -1,10 +1,12 @@
 class VotesController < ApplicationController
+
   def index
   end
 
   def create
     @links = Link.all.sort_by{|l| l.votes.count}.reverse
     @vote = Vote.where(:link_id => params[:vote][:link_id], :user_id => current_user.id).first
+
     if @vote
       @vote.up = params[:vote][:up]
       @vote.save
@@ -16,4 +18,5 @@ class VotesController < ApplicationController
       end
     end
   end
+
 end

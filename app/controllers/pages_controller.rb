@@ -1,4 +1,5 @@
 class PagesController < ApplicationController
+
   def index
     @top_links = Link.all.sort_by{|l| l.votes.count}.reverse
 

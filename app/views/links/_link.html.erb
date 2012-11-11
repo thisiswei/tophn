@@ -5,7 +5,12 @@
       <%= link_to link.title, link.url %> <span id='short_url'><%= short_url(link.url) %> </span>
     </div>
     <span id='vote'>
-      <%= link_to "↑", votes_path(:vote => {:link_id => link.id, :up => true}), :method => :post, remote: true %>
+      <% if current_user %>
+        <%= link_to "↑", votes_path(:vote => {:link_id => link.id, :up => true}), :method => :post, remote: true %>
+      <% else %>
+        <%= link_to "↑", new_user_session_path %>
+      <% end %>
+
     </span>
     <span id='points'>
       <%= link.votes.count %> points
