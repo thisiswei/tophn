@@ -15,6 +15,7 @@
     <span id='points'>
       <%= link.votes.count %> points
       <%= time_ago_in_words link.created_at %> by <%= username(link.user_id) %>
+      score:<%= link.hnscore%>
 
     </span>
 

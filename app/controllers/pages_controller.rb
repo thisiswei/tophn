@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
 
   def index
-    @links = Link.all.sort_by{|l| l.votes.count}.reverse
+    @links = Link.paginate(:page => params[:page], :per_page => 30)
     @user = current_user
   end
 end

@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+gem 'ruby-hackernews'
 gem 'rails', '3.2.8'
 gem 'devise'
 gem 'will_paginate', '~> 3.0'
