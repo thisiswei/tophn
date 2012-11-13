@@ -1,7 +1,7 @@
 
 class Link < ActiveRecord::Base
   include RubyHackernews
-  attr_accessible :title, :url, :hnscore
+  attr_accessible :title, :url, :hnscore, :hnuser
   belongs_to :user
   has_many :votes
   scope :top, lambda{ Link.all.sort_by{|l| l.votes.count}.reverse}
@@ -30,7 +30,8 @@ class Link < ActiveRecord::Base
       unless Link.exists?(:title => entry_title)
             link = Link.new(:title   => entry_title ,
                             :hnscore => entry_vote,
-                            :url     => actual_link  )
+                            :url     => actual_link,
+                            :hnuser  => entry.user.name  )
             link.user_id = 1 
             link.save 
       else

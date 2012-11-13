@@ -5,10 +5,18 @@ module LinksHelper
 
   def username(id)
     u=User.find(id)
-    if u.username
+    if u.username 
       link_to u.username,"http://twitter.com/#{u.username}"
     else
-      "__"
+      ""
+    end
+  end
+
+  def hn_user(user)
+    if user 
+      link_to user, "http://news.ycombinator.com/user?id=#{user}"
+    else
+      ""
     end
   end
 end

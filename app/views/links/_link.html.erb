@@ -14,9 +14,13 @@
     </span>
     <span id='points'>
       <%= link.votes.count %> points
-      <%= time_ago_in_words link.created_at %> by <%= username(link.user_id) %>
-      score:<%= link.hnscore%>
-
+      <%= time_ago_in_words link.created_at %>  <%= username(link.user_id) %>
+      <% if (link.hnscore) > 200 %>
+        score : <span id= 'hn_score'> <%= link.hnscore %> </span>
+      <% else %>
+        score : <%= link.hnscore %>
+      <% end %> 
+       <%= hn_user(link.hnuser) %> 
     </span>
 
   </div>
