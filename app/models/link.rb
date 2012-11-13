@@ -9,7 +9,7 @@ class Link < ActiveRecord::Base
   before_save :format_url
   validates :title, :uniqueness => true
   validates :url, :uniqueness => true 
-  validates :url,:title, :presence => {:message => 'what the heck ?'}
+  validates :url,:title,:hnscore, :presence => {:message => 'what the heck ?'}
   
   
   def self.update
@@ -39,6 +39,27 @@ class Link < ActiveRecord::Base
         link.update_attributes(hnscore: entry_vote)
       end
     end
+  end
+
+  def better_ranks(data,pages)
+    (0...pages).each do |page|
+      slice = sort_by_rank(data[30*page...30*(page+1)])
+      case page
+      when 0
+        result += slice[0..8]
+      when 1..2
+        result += slice[0..5] 
+      when 3..7
+        result += slice[0..3]
+      else
+        result += slice[0..2]
+      end
+    end 
+    result 
+  end
+
+  def sort_by_rank(data)
+    data = data.sort_by{|m| m.voting.score}.reverse
   end
 
   private
