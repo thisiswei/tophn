@@ -12,17 +12,17 @@ class Link < ActiveRecord::Base
   validates :url,:title,:hnscore, :presence => {:message => 'what the heck ?'}
   
   
-  def self.update
+  def self.update(pages)
     if Link.last.created_at < 30.minute.ago
-      self.update_links
+      self.update_links(pages)
     end
   end
 
-  def self.update_links
-    top_entries = better_ranks(Entry.all(8),8)
+  def self.update_links(pages)
+    top_entries = better_ranks(Entry.all(pages),pages)
     top_entries.each do |entry|
       entry_link       = entry.link.href
-      actual_link      = entry_link.include?('http') ? entry_link : ("http://news.ycombinator.com"+entry_link)
+      actual_link      = entry_link.include?('http') ? entry_link : ("http://news.ycombinator.com/"+entry_link)
       entry_title      = entry.link.title
       entry_vote       = entry.voting.score
       unless Link.exists?(:title => entry_title)
@@ -40,20 +40,20 @@ class Link < ActiveRecord::Base
 
   def self.better_ranks(data,pages)
     result = []
-    (0...pages).each do |page|
-      slice = sort_by_rank(data[30*page...30*(page+1)])
-      case page
-      when 0
-        result += slice[0..9]
-      when 1..2
-        result += slice[0..5] 
-      when 3..7
-        result += slice[0..3]
+    (-pages...0).each do |page|
+      slice = sort_by_rank(data[-30*(page+1)...-30*page])
+      case -page
+      when 1
+        result += (slice[0..9])
+      when 2..3
+        result += (slice[0..5])
+      when 4..8
+        result += (slice[0..3])
       else
-        result += slice[0..1]
+        result += (slice[0..1])
       end
     end 
-    result.reverse 
+    result
   end
 
   def self.sort_by_rank(data)

@@ -7,7 +7,8 @@
 }
 
 #links{
-  position: relative; top: 4px; left: 10px;
+  position: relative; top: 4px;
+  text-indent: 20em;
 
 }
 
@@ -47,15 +48,17 @@ ol {
 }
 li{
   list-style-type: lower-roman;
-  list-style-type: decimal;
+  list-style-type: circle;
   list-style-position:outside;
 }
 
 span#vote {
-  font-size: 0.6em;
+  font-size: 0.5em;
   font-family: Courier;
-  color: rgba(59, 59, 59, 0.45) ;
-  position: relative; top: -17.8px; right:9px;
+  color: rgba(255, 191, 62, 0.44);
+  position: relative; top: -17.8px; right:-300px;
+
+
 
 }
 
@@ -75,7 +78,8 @@ a:visited{
 #points{
   font-size: 0.6em;
   color: rgba(93, 81, 81, 0.80);
-  position: relative; top: -3px; right:20px;
+  position: relative; top: -3px; right:-310px;
+
 }
 
 #submit_form{
