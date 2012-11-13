@@ -1,10 +1,11 @@
 
 <ol>
-  <%= will_paginate @links%>
   <div class="ajax">
     <%= render  @links %>
   </div>
 </ol>
+<span id='will_paginate'> <%= will_paginate @links%>  </span>
+
 
 
 <%= link_to "add link", new_link_path %>

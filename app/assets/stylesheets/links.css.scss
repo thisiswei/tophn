@@ -3,53 +3,77 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 #short_url{
-  font-size: 0.7em;
+  font-size: 0.82em;
 }
+
+#links{
+  position: relative; top: 4px; left: 250px;
+
+}
+
+#will_paginate{
+ text-align: right;
+}
+
 .notice{
   background-color: #ff3838
 }
 .odd {
-  background: rgba(165, 165, 159, 0.27)
+  background: rgba(240, 240, 240, 0.71)
 }
-#links {
-  background: rgba(244, 244, 234, 0.44);
-  font-size: 1.1em;
-}
+
 #title{
-  font-size: 0.97em;
-  color: #8996a5;
-  text-align: left;
+  font-size: 12px;
+  color: #a5470c;
 }
 #hn_score{
-  background:#41F71A
+  background:#41F71A  ;
+  font-family: courier;
+  font-size:1em;
+}
+
+#normal_score{
+  font-family: courier;
+  color: #322e33
+}
+
+#hn_username{
+  font-size: 0.85em;
 }
 
 ol {
-  background-color: #f5f5eb;
+  list-style-type: none;
+}
+li{
+  list-style-type: lower-roman;
+  list-style-type: circle;
 }
 
 span#vote {
-  font-size: 0.4em;
+  font-size: 0.6em;
   font-family: Courier;
+  color: rgba(59, 59, 59, 0.45) ;
+  position: relative; top: -17.5px; right:12px;
+
 }
 
 a{
-  color: #8ea8c0
+  color: #000000;
+  font-family:Verdana;
 }
 
 a:hover {
-  background-color: rgba(175, 156, 140, 0.42);
+  color: #413e97
 }
 a:visited{
-  color: rgba(246, 252, 255, 0.16);
+  color: rgba(212, 212, 228, 0.27);
 }
-span#vote {
-  font-size: 0.8em;
-  font-family: Verdana;
-}
+
 
 #points{
   font-size: 0.6em;
+  color: rgba(93, 81, 81, 0.80);
+  position: relative; top: -3px; right: 10px;
 }
 
 #submit_form{

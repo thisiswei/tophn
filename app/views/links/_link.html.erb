@@ -21,9 +21,9 @@
       <% if (link.hnscore) > 200 %>
         score : <span id= 'hn_score'> <%= link.hnscore %> </span>
       <% else %>
-        score : <%= link.hnscore %>
+        score : <span id= 'normal_score'><%= link.hnscore %>  </span>
       <% end %> 
-       <%= hn_user(link.hnuser) %> 
+        <span id= 'hn_username'> <%= hn_user(link.hnuser) %> </span>
     </span>
 
   </div>
