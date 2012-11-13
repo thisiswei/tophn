@@ -5,7 +5,7 @@ module LinksHelper
 
   def username(id)
     u=User.find(id)
-    if u.username 
+    if u && u.username 
       link_to u.username,"http://twitter.com/#{u.username}"
     else
       ""
