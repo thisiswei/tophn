@@ -30,7 +30,6 @@ class Link < ActiveRecord::Base
                             :hnscore => entry_vote,
                             :url     => actual_link,
                             :hnuser  => entry.user.name  )
-            link.user_id = 1 
             link.save 
       else
         link = Link.find_by_title(entry_title)
