@@ -19,10 +19,8 @@ class Link < ActiveRecord::Base
   end
 
   def self.update_links
-    lean_top_ten_pages = Entry.all(1).delete_if{|m| m.voting.score.nil?}
-    sorted_top_ten_pages = lean_top_ten_pages.sort_by{|m| m.voting.score}.reverse
-    top_fifty_entries = sorted_top_ten_pages[0..50]
-    top_fifty_entries.each do |entry|
+    top_entries = better_ranks(Entry.all(8),8)
+    top_entries.each do |entry|
       entry_link       = entry.link.href
       actual_link      = entry_link.include?('http') ? entry_link : ("http://news.ycombinator.com"+entry_link)
       entry_title      = entry.link.title
@@ -41,24 +39,26 @@ class Link < ActiveRecord::Base
     end
   end
 
-  def better_ranks(data,pages)
+  def self.better_ranks(data,pages)
+    result = []
     (0...pages).each do |page|
       slice = sort_by_rank(data[30*page...30*(page+1)])
       case page
       when 0
-        result += slice[0..8]
+        result += slice[0..9]
       when 1..2
         result += slice[0..5] 
       when 3..7
         result += slice[0..3]
       else
-        result += slice[0..2]
+        result += slice[0..1]
       end
     end 
-    result 
+    result.reverse 
   end
 
-  def sort_by_rank(data)
+  def self.sort_by_rank(data)
+    data.delete_if{|m| m.voting.score.nil?}
     data = data.sort_by{|m| m.voting.score}.reverse
   end
 
