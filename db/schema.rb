@@ -17,9 +17,9 @@ ActiveRecord::Schema.define(:version => 20121112201043) do
     t.string   "title"
     t.string   "url"
     t.integer  "user_id"
-    t.datetime "created_at",                :null => false
-    t.datetime "updated_at",                :null => false
-    t.integer  "hnscore",    :default => 0
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "hnscore"
   end
 
   create_table "users", :force => true do |t|
