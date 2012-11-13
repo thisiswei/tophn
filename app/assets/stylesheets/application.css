@@ -16,3 +16,9 @@
     text-align: right;
     font-size: 0.8em;
 }
+
+
+div.add_link_button {
+    text-align: center;
+    background-color: #454456
+}

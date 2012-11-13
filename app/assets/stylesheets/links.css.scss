@@ -7,12 +7,13 @@
 }
 
 #links{
-  position: relative; top: 4px; left: 250px;
+  position: relative; top: 4px; left: 10px;
 
 }
 
 #will_paginate{
- text-align: right;
+ text-align: left;
+ font-size: 0.8em;
 }
 
 .notice{
@@ -46,14 +47,15 @@ ol {
 }
 li{
   list-style-type: lower-roman;
-  list-style-type: circle;
+  list-style-type: decimal;
+  list-style-position:outside;
 }
 
 span#vote {
   font-size: 0.6em;
   font-family: Courier;
   color: rgba(59, 59, 59, 0.45) ;
-  position: relative; top: -17.5px; right:12px;
+  position: relative; top: -17.8px; right:9px;
 
 }
 
@@ -73,7 +75,7 @@ a:visited{
 #points{
   font-size: 0.6em;
   color: rgba(93, 81, 81, 0.80);
-  position: relative; top: -3px; right: 10px;
+  position: relative; top: -3px; right:20px;
 }
 
 #submit_form{
