@@ -57,7 +57,7 @@ class Link < ActiveRecord::Base
   end
 
   def self.sort_by_rank(data)
-    data.delete_if{|m| m.voting.score.nil?}
+    data.delete_if{|m| m.voting.score.nil?} 
     data = data.sort_by{|m| m.voting.score}.reverse
   end
 
