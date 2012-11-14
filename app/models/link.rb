@@ -13,7 +13,7 @@ class Link < ActiveRecord::Base
   
   
   def self.update(pages)
-    if Link.nil?
+    if Link.last.created_at < 1.hour.ago || Link.count==0
       self.update_links(pages)
     end
   end
