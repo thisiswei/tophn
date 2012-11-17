@@ -4,22 +4,16 @@
     <div id='title'>
       <%= link_to link.title, link.url %> <span id='short_url'><%= short_url(link.url) %> </span>
     </div>
-    <span id='vote'>
-      <% if current_user %>
-        <%= link_to "^", votes_path(:vote => {:link_id => link.id, :up => true}), :method => :post, remote: true %>
-      <% else %>
-        <%= link_to "^", new_user_session_path %>
-      <% end %>
-
-    </span>
     <span id='points'>
-      <%= link.votes.count %> points  |
-      <%= time_ago_in_words link.created_at %>  |
-      <% if (link.hnscore) > 200 %>
-        score : <span id= 'hn_score'> <%= link.hnscore %> </span>
-      <% else %>
-        score : <span id= 'normal_score'><%= link.hnscore %>  </span>
-      <% end %> 
+
+      <%= time_ago_in_words link.created_at %>
+      <% unless link.hnscore.nil? %>
+        <% if (link.hnscore) > 200 %>
+         | score : <span id= 'hn_score'> <%= link.hnscore %> </span>
+        <% else %>
+         | score : <span id= 'normal_score'><%= link.hnscore %>  </span>
+        <% end %>
+      <% end %>
         <span id= 'hn_username'> <%= hn_user(link.hnuser) %> </span>
     </span>
 

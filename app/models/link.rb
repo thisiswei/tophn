@@ -1,5 +1,6 @@
 
 class Link < ActiveRecord::Base
+  PER_PAGE = 43
   include RubyHackernews
   attr_accessible :title, :url, :hnscore, :hnuser
   belongs_to :user
@@ -9,11 +10,11 @@ class Link < ActiveRecord::Base
   before_save :format_url
   validates :title, :uniqueness => true
   validates :url, :uniqueness => true 
-  validates :url,:title,:hnscore, :presence => {:message => 'what the heck ?'}
+  validates :url,:title, :presence => {:message => 'what the heck ?'}
   
   
   def self.update(pages)
-    if Link.last.created_at < 3.hour.ago 
+    if Link.last.created_at < 1.hour.ago
       self.update_links(pages)
     end
   end

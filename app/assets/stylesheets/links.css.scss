@@ -8,7 +8,7 @@
 
 #links{
   position: relative; top: 4px;
-  text-indent: 20em;
+  padding-left: 15em;
 }
 
 #will_paginate{
@@ -24,7 +24,7 @@
 }
 
 #title{
-  font-size: 12px;
+  font-size: 13px;
   color: #a5470c;
 }
 #hn_score{
@@ -39,7 +39,7 @@
 }
 
 #hn_username{
-  font-size: 0.85em;
+  font-size: 0.65em;
 }
 
 ol {
@@ -55,7 +55,7 @@ span#vote {
   font-size: 0.5em;
   font-family: Courier;
   color: rgba(255, 191, 62, 0.44);
-  position: relative; top: -17.8px; right:-300px;
+  position: relative; top: -18px; right: 14px;
 
 
 
@@ -70,14 +70,14 @@ a:hover {
   color: #413e97
 }
 a:visited{
-  color: rgba(211, 222, 223, 0.27);
+  color: rgba(200, 200, 200, 0.25);
 }
 
 
 #points{
-  font-size: 0.6em;
+  font-size: 0.4em;
   color: rgba(93, 81, 81, 0.80);
-  position: relative; top: -3px; right:-310px;
+  position: relative; top: -7px;
 
 }
 

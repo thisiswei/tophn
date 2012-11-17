@@ -1,8 +1,8 @@
 class PagesController < ApplicationController
 
-  def index 
-    Link.update(12)
-    @links = Link.paginate(:page => params[:page], :per_page => 43).order('created_at DESC')
+  def index
+    @links = Link.order('created_at DESC').page(params[:page]).per_page(Link::PER_PAGE)
     @user  = current_user
+    Link.update(12)
   end
 end

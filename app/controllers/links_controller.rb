@@ -1,5 +1,5 @@
 class LinksController < ApplicationController
-
+  REG = /[a-zA-Z0-9]+(\.[a-zA-Z]+)+/
   def index
 
   end
@@ -11,9 +11,9 @@ class LinksController < ApplicationController
   end
 
   def create
-    unless current_user.nil?
+    if current_user
       @link = current_user.links.new(params[:link])
-      if Link.find_by_url(params[:link][:url]).nil? and !REGG.match(params[:link][:url]).nil?
+      unless Link.exists?(url: params[:link][:url]) and REG.match(params[:link][:url]).nil?
         @link.save
         redirect_to pages_path
       else
