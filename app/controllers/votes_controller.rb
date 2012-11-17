@@ -5,7 +5,7 @@ class VotesController < ApplicationController
 
   def create
 
-    @links = Link.order('created_at DESC').includes(:votes).page(params[:page]).per_page(Link::PER_PAGE)
+    @links = Link.order('created_at DESC').page(params[:page]).per_page(Link::PER_PAGE)
     @vote = Vote.where(:link_id => params[:vote][:link_id], :user_id => current_user.id).first
 
     if @vote

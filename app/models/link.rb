@@ -10,7 +10,7 @@ class Link < ActiveRecord::Base
   before_save :format_url
   validates :title, :uniqueness => true
   validates :url, :uniqueness => true 
-  validates :url,:title, :presence => {:message => 'what the heck ?'}
+  validates :url,:title,:hnscore, :presence => {:message => 'what the heck ?'}
   
   
   def self.update(pages)

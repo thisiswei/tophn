@@ -6,5 +6,4 @@
 </ol>
 <span id='will_paginate'> <%= will_paginate @links%>  </span>
 
-<div class='add_link_button'> <%= link_to "add link", new_link_path %>   </div>
 <div class='link_updated_time'> updated at: <%= time_ago_in_words Link.last.created_at %> ago </div>
