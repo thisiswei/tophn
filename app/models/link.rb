@@ -13,7 +13,7 @@ class Link < ActiveRecord::Base
   
   
   def self.update(pages)
-    if Link.last.created_at < 1.hour.ago 
+    if Link.last.created_at < 3.hour.ago 
       self.update_links(pages)
     end
   end
@@ -44,13 +44,13 @@ class Link < ActiveRecord::Base
       slice = sort_by_rank(data[-30*(page+1)...-30*page])
       case -page
       when 1
-        result += (slice[0..9])
+        result += (slice[-10..-1])
       when 2..3
-        result += (slice[0..5])
+        result += (slice[-5..-1])
       when 4..8
-        result += (slice[0..3])
+        result += (slice[-3..-1])
       else
-        result += (slice[0..1])
+        result += (slice[-2..-1])
       end
     end 
     result
@@ -58,7 +58,7 @@ class Link < ActiveRecord::Base
 
   def self.sort_by_rank(data)
     data.delete_if{|m| m.voting.score.nil?} 
-    data = data.sort_by{|m| m.voting.score}.reverse
+    data = data.sort_by{|m| m.voting.score}
   end
 
   private
