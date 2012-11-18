@@ -4,10 +4,10 @@ gem 'rails', '3.2.8'
 gem 'devise'
 gem 'will_paginate', '~> 3.0'
 gem 'sqlite3', :group =>[:development,:test]
-gem 'unicorn'
 group:production do
   gem 'thin'
   gem 'pg'
+  gem 'unicorn'
 end
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
