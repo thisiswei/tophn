@@ -34,7 +34,7 @@ Linksgram::Application.configure do
   #
   # # User cloudfront as deployment asset host
   # # SET THIS AT THE END OF THIS GUIDE, 
-  config.action_controller.asset_host = d3130fnmd87kje.cloudfront.net
+  config.action_controller.asset_host = "d3130fnmd87kje.cloudfront.net"
 
   # Defaults to nil and saved in location specified by config.assets.prefix
   # config.assets.manifest = YOUR_PATH
