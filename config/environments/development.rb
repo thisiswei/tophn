@@ -31,8 +31,16 @@ Linksgram::Application.configure do
   config.active_record.auto_explain_threshold_in_seconds = 0.5
 
   # Do not compress assets
-  config.assets.compress = false
+  config.assets.compress = true
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  config.assets.enabled = true
+
+  #Needs to be false on Heroku
+  ## Can be set to invalidate the whole cache
+  #
+  # Serving static assets and setting cache headers 
+  # which will be used by cloudfront as well
 end

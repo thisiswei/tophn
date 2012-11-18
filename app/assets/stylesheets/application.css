@@ -23,7 +23,7 @@ div.add_link_button {
     background-color: #454456
 }
 div.link_updated_time{
-  font-size: 1em;
+  font-size: 0.8em;
   text-align:right;
-  color:lightblue;
+  color:black;
 }
