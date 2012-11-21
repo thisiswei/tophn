@@ -13,9 +13,9 @@ class Link < ActiveRecord::Base
   validates :url,:title,:hnscore, :presence => {:message => 'what the heck ?'}
   
   
-  def self.update(pages)
+  def self.update
     if Link.last.created_at < 1.hour.ago
-      self.update_links(pages)
+      self.update_links(8)
     end
   end
 
