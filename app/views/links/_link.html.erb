@@ -2,19 +2,15 @@
 <li class="<%= cycle('odd','')%>">
   <div id='links'>
     <div id='title'>
-      <%= link_to link.title, link.url %> <span id='short_url'><%= short_url(link.url) %> </span>
-    </div>
+      <%= link_to link.title, link.url %> 
+      <span id='short_url'><%= short_url(link.url) %> </span>
+    </div><!--title-->
+    
     <span id='points'>
-
       <%= time_ago_in_words link.created_at %>
-      <% if (link.hnscore) > 200 %>
-         | score : <span id= 'hn_score'> <%= link.hnscore %> </span>
-      <% else %>
-         | score : <span id= 'normal_score'><%= link.hnscore %>  </span>
-      <% end %>
-
+      <%= score(link) %> 
       <span id= 'hn_username'> <%= hn_user(link.hnuser) %> </span>
-    </span>
+    </span><!--points-->
 
-  </div>
+  </div><!-- links -->
 </li>

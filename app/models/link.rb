@@ -1,6 +1,6 @@
 
 class Link < ActiveRecord::Base
-  PER_PAGE = 43
+  PER_PAGE = 33
   attr_accessible :title, :url, :hnscore, :hnuser
   belongs_to :user
   has_many :votes

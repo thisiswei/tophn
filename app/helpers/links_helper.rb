@@ -19,4 +19,13 @@ module LinksHelper
       ""
     end
   end
+
+  def score(link)
+      result=raw(if link.hnscore  > 200
+        " | score :  <span id= 'hn_score'>" + " #{link.hnscore} " + "</span>"
+      else 
+        " | score : <span id= 'normal_score'> " + " #{link.hnscore}" +  "</span> "
+      end) 
+      result
+  end
 end
