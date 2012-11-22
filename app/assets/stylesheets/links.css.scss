@@ -9,6 +9,7 @@
 #links{
   position: relative; top: 4px;
   padding-left: 15em;
+  margin-bottom:-3px;
 }
 
 #will_paginate{
@@ -20,13 +21,23 @@
   background-color: #ff3838
 }
 .odd {
-  background: rgba(240, 240, 240, 0.71)
+  background: rgba(254, 254, 254, 0.64)
 }
 
 #title{
-  font-size: 13.3px;
+  font-size: 13.4px;
   color: #a5470c;
 }
+#title_header:hover{
+  background-color: rgba(176, 180, 168, 0.26);
+}
+#title_highlight a{
+  color: rgba(246, 82, 0, 0.94);
+}
+#title_highlight a:hover{
+  color: rgb(240, 2, 66);
+}
+
 #hn_score{
   background:#41F71A  ;
   font-family: courier;
@@ -69,9 +80,6 @@ a{
   font-family:Verdana;
 }
 
-a:hover {
-  color: #413e97
-}
 a:visited{
   color: rgba(200, 200, 200, 0.25);
 }

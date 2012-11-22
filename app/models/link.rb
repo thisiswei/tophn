@@ -1,7 +1,7 @@
 
 class Link < ActiveRecord::Base
-  PER_PAGE = 33
-  attr_accessible :title, :url, :hnscore, :hnuser
+  PER_PAGE = 35
+  attr_accessible :title, :url, :hnscore, :hnuser, :created_at
   belongs_to :user
   has_many :votes
 
@@ -12,8 +12,8 @@ class Link < ActiveRecord::Base
   class << self
     include RubyHackernews
     def update
-      return if Link.last.created_at >  0.2.hour.ago
-      update_links(10)
+      return if Link.last.created_at >  0.1.hour.ago
+      update_links(9)
     end
     private
       def update_links(pages)
@@ -27,7 +27,8 @@ class Link < ActiveRecord::Base
                 link = Link.new(:title   => entry_title ,
                                 :hnscore => entry_vote,
                                 :url     => actual_link,
-                                :hnuser  => entry.user.name  )
+                                :hnuser  => entry.user.name,
+                                :created_at => entry.time)
                 link.save 
           else
             link = Link.find_by_title(entry_title)

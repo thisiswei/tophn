@@ -6,4 +6,4 @@
 </ol>
 <span id='will_paginate'> <%= will_paginate @links%>  </span>
 
-<div class='link_updated_time'> updated at: <%= time_ago_in_words Link.last.created_at %> ago </div>
+<div class='link_updated_time'> updated at: <%= time_ago_in_words @last_link_time %> ago </div>
