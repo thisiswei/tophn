@@ -13,7 +13,7 @@ class Link < ActiveRecord::Base
     include RubyHackernews
     def update
       return if Link.last.created_at >  2.hour.ago
-      update_links(8)
+      update_links(10)
     end
     private
       def update_links(pages)
