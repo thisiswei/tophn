@@ -1,17 +1,16 @@
 
 class Link < ActiveRecord::Base
   PER_PAGE = 43
-  include RubyHackernews
   attr_accessible :title, :url, :hnscore, :hnuser
   belongs_to :user
   has_many :votes
 
-  before_save :format_url
   validates :title, :uniqueness => true
   validates :url, :uniqueness => true 
   validates :url,:title,:hnscore, :presence => {:message => 'what the heck ?'}
   
   class << self
+    include RubyHackernews
     def update
       return if Link.last.created_at >  2.hour.ago
       update_links(8)
@@ -60,8 +59,5 @@ class Link < ActiveRecord::Base
         data = data.sort_by{|m| m.voting.score}
       end
        
-      def format_url
-       self.url = 'http://'<<self.url unless self.url.include?('http://')
-      end
   end
 end
