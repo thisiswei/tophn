@@ -3,16 +3,15 @@ class Link < ActiveRecord::Base
   PER_PAGE = 35
   attr_accessible :title, :url, :hnscore, :hnuser, :created_at
   belongs_to :user
-  has_many :votes
 
   validates :title, :uniqueness => true
   validates :url, :uniqueness => true 
-  validates :url,:title,:hnscore, :presence => {:message => 'what the heck ?'}
+  validates :url,:title, :presence => {:message => 'what the heck ?'}
   
   class << self
     include RubyHackernews
     def update
-      update_links(9)
+      update_links(8)
     end
     private
       def update_links(pages)
@@ -23,12 +22,11 @@ class Link < ActiveRecord::Base
           entry_title      = entry.link.title
           entry_vote       = entry.voting.score
           unless Link.exists?(:title => entry_title)
-                link = Link.new(:title   => entry_title ,
-                                :hnscore => entry_vote,
-                                :url     => actual_link,
-                                :hnuser  => entry.user.name,
-                                :created_at => entry.time)
-                link.save 
+                link = Link.create!(:title       => entry_title ,
+                                    :hnscore     => entry_vote,
+                                    :hnuser      => entry.user.name,
+                                    :url         => actual_link,
+                                    :created_at  => entry.time)
           else
             link = Link.find_by_title(entry_title)
             link.update_attributes(hnscore: entry_vote)
