@@ -12,7 +12,6 @@ class Link < ActiveRecord::Base
   class << self
     include RubyHackernews
     def update
-      return if Link.last.created_at >  8.minute.ago
       update_links(9)
     end
     private
