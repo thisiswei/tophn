@@ -2,6 +2,7 @@ class Showhn
 
   class << self 
     KEYWORD =/(python|ruby|rails|javascript|program|learn|show hn|developer|code|api|djanjo|coders|course|web application)/
+    include RubyHackernews
     def perform
       collect_links
     end
