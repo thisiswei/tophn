@@ -1,8 +1,9 @@
 
 class Link < ActiveRecord::Base
   PER_PAGE = 35
-  attr_accessible :title, :url, :hnscore, :hnuser, :created_at
+  attr_accessible :title, :url, :hnscore, :hnuser, :created_at, :person_id
   belongs_to :user
+  belongs_to :person
 
   validates :title, :uniqueness => true
   validates :url, :uniqueness => true 
@@ -37,7 +38,7 @@ class Link < ActiveRecord::Base
       def better_ranks(data,pages)
         result = []
         (-pages...0).each do |page|
-          slice = sort_by_rank(data[-30*(page+1)...-30*page])
+          slice = sort_by_rank(data[-33*(page+1)...-30*page])
           case -page
           when 1
             result += (slice[-10..-1])
