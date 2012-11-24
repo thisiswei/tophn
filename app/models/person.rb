@@ -3,13 +3,13 @@ class Person < ActiveRecord::Base
   has_many:links
   validates_uniqueness_of :hn_username
   validates_presence_of :hn_username
-  before_save  :fill_in_about
-  after_create :whether_a_alpha_geek
+  before_save  :fill_in_about_check_if_a_alpha_geek
 
   private 
-    def fill_in_about        
+    def fill_in_about_check_if_a_alpha_geek        
       user_hn_profile_url = "http://news.ycombinator.com/user?id=#{self.hn_username}"
       self.about = get_about(user_hn_profile_url)
+      self.alpha_geek = whether_a_alpha_geek
     end   
 
     def get_about(url)
@@ -23,8 +23,7 @@ class Person < ActiveRecord::Base
       links = Link.where(person_id: self.id)
       return if links.nil?
       total_score = links.map(&:hnscore).inject(0){|total,n| total+n ; total} 
-      total_score > 50 ? self.alpha_geek=true : self.alpha_geek=false
-      self.save!
+      total_score > 50 ? true : false
     end
 
        
