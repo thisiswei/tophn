@@ -10,7 +10,7 @@ class Showhn
     private
 
       def collect_links
-        Entry.all(10).each do |entry| 
+        Entry.all(1).each do |entry| 
           title    = entry.link.title 
           if title.match(KEYWORD) 
               username = entry.user.name
