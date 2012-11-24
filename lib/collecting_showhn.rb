@@ -16,7 +16,7 @@ class Showhn
 
       def collect_links
         Entry.all(9).each do |entry| 
-          title    = entry.link.title 
+          title    = entry.link.title.downcase
           if title.match(KEYWORD)
             username = entry.user.name
             score    = entry.voting.score     
