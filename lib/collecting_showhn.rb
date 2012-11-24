@@ -1,4 +1,4 @@
-class Showhn
+class Showhn 
 
   class << self 
     KEYWORD =/(python|ruby|rails|javascript|program|learn|show hn|developer|code|api|djanjo|coders|course|web application)/
@@ -17,7 +17,12 @@ class Showhn
               score    = entry.voting.score 
               url      = entry.link.href
               unless Link.exists?(title)
-                  person = Person.find_or_create_by_name(hn_username: username)
+                  person = Person.new(hn_username: username)
+                  if person.new_record?
+                    person.save!
+                  else
+                    person = Person.find_by_name(username) 
+                  end
                   person.links.create!(title: title, hnscore: score, url: url, created_at: entry.time) 
               else
                 link = Link.find_by_title(title)
