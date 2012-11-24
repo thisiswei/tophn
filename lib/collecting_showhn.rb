@@ -17,7 +17,7 @@ class Showhn
               score    = entry.voting.score 
               url      = entry.link.href
               unless Link.exists?(title)
-                  person = Person.find_or_create!(hn_username: username)
+                  person = Person.find_or_create_by_name(hn_username: username)
                   person.links.create!(title: title, hnscore: score, url: url, created_at: entry.time) 
               else
                 link = Link.find_by_title(title)
