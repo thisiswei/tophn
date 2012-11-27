@@ -21,7 +21,7 @@ class Showhn
           title  = entry.link.title
 
           if title.downcase.match(KEYWORD)
-            username, score, url = entry.user.name, entry.voting.score, entry.link.href  
+            username, score, url = entry.user.name, entry.voting.score, filter(entry.link.href)  
             person = find_or_create_person(username) 
             person.links.create!(title: title, hnscore: score, url: url, created_at: entry.time, hnuser: username) unless Link.exists?(url: url) or Link.exists?(title: title)
           end 
@@ -44,6 +44,10 @@ class Showhn
 
       def find_or_create_person(name)
         Person.find_by_hn_username(name) || Person.create(hn_username: name) 
+      end
+      
+      def filter(link)
+        link.include?('http') ? link : ("http://news.ycombinator.com/"+link) 
       end
   end
 end
