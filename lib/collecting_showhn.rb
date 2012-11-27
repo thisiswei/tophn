@@ -18,22 +18,19 @@ class Showhn
         return if entries.none?
 
         entries.each do |entry| 
-          title  = entry.link.title
-
-          if title.downcase.match(KEYWORD)
-            username, score, url = entry.user.name, entry.voting.score, filter(entry.link.href)  
-            person = find_or_create_person(username) 
-            unless Link.exists?(url: url) or Link.exists?(title: title) 
-              person.links.create!(title: title, hnscore: score, url: url, created_at: entry.time, hnuser: username) 
-            else
-              update_link(title,score)
-            end 
-          end
+          title  = entry.link.title 
+          username, score, url = entry.user.name, entry.voting.score, filter(entry.link.href)  
+          person = find_or_create_person(username) 
+          #unless Link.exists?(url: url) or Link.exists?(title: title) 
+          person.links.create!(title: title, hnscore: score, url: url, created_at: entry.time, hnuser: username) 
+          #else
+          #  update_link(title,score)
+          #end 
         end
       end
 
       def filter_entries_with_keywords
-        Entry.all(10).find_all{|entry| entry.link.title.match(KEYWORD)}.delete_if{|entry| entry.user.name.nil? or entry.voting.score.nil? }
+        Entry.all(10).find_all{|entry| entry.link.title.downcase.match(KEYWORD)}.delete_if{|entry| entry.user.name.nil? or entry.voting.score.nil? }
       end
 
       def update_link(title,score)
