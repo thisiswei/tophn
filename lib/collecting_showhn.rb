@@ -23,14 +23,12 @@ class Showhn
           if title.downcase.match(KEYWORD)
             username, score, url = entry.user.name, entry.voting.score, filter(entry.link.href)  
             person = find_or_create_person(username) 
-            person.links.create!(title: title, hnscore: score, url: url, created_at: entry.time, hnuser: username) unless Link.exists?(url: url) or Link.exists?(title: title)
-          end 
-
-            #if  Link.exists?(url: url)
-            #   update_link(title,score)
-            #else
-
-        end
+            unless Link.exists?(url: url) or Link.exists?(title: title) 
+              person.links.create!(title: title, hnscore: score, url: url, created_at: entry.time, hnuser: username) 
+            else
+              update_link(title,score)
+            end 
+          end
       end
 
       def filter_entries_with_keywords
