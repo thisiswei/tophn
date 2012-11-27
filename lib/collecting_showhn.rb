@@ -1,7 +1,7 @@
 class Showhn 
 
   class << self 
-    KEYWORD =/(python|ruby|rails|javascript|program|learn|show hn|developer|code|api|djanjo|code|course|web application|hack)/
+    KEYWORD =/(python|ruby|rails|javascript|program|learn|show hn|developer|code|api|django|code|course|web application|design|database|pattern|hack|librar|create|hackathon)/
     include RubyHackernews
     def perform
       update_links
