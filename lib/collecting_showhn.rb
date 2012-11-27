@@ -35,7 +35,7 @@ class Showhn
       end
 
       def filter_entries_with_keywords
-        Entry.all(10).find_all{|entry| entry.link.title.match(KEYWORD)}.delete_if{|entry| entry.user.name.nil? or m.voting.score.nil? }
+        Entry.all(10).find_all{|entry| entry.link.title.match(KEYWORD)}.delete_if{|entry| entry.user.name.nil? or entry.voting.score.nil? }
       end
 
       def update_link(title,score)
