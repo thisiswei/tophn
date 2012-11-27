@@ -21,8 +21,7 @@ class Showhn
           title  = entry.link.title 
           username, score, url = entry.user.name, entry.voting.score, filter(entry.link.href)  
           person = find_or_create_person(username) 
-          #unless Link.exists?(url: url) or Link.exists?(title: title) 
-          person.links.create!(title: title, hnscore: score, url: url, created_at: entry.time, hnuser: username) 
+          person.links.create!(title: title, hnscore: score, url: url, created_at: entry.time, hnuser: username) unless Link.exists?(url: url) or Link.exists?(title: title) 
           #else
           #  update_link(title,score)
           #end 
