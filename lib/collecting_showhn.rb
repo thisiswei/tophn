@@ -26,7 +26,7 @@ class Showhn
             person.links.create!(title: title, hnscore: score, url: url, created_at: entry.time, hnuser: username) unless Link.exists?(url: url) or Link.exists?(title: title)
           end 
 
-          sleep 2
+          sleep 2                                                                
             #if  Link.exists?(url: url)
             #   update_link(title,score)
             #else

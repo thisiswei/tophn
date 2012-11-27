@@ -3,7 +3,7 @@ class Person < ActiveRecord::Base
   has_many:links
   validates_uniqueness_of :hn_username
   validates_presence_of :hn_username
-  #before_create  :fill_in_about
+  before_create  :fill_in_about
   after_create   :whether_a_alpha_geek
   
 
