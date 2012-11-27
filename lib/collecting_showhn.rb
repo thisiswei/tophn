@@ -29,6 +29,7 @@ class Showhn
               update_link(title,score)
             end 
           end
+        end
       end
 
       def filter_entries_with_keywords
