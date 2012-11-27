@@ -13,7 +13,7 @@ class Showhn
          collect_links 
       end
 
-      def collect_links(entries)
+      def collect_links
         entries = filter_entries_with_keywords 
         return if entries.none?
 
