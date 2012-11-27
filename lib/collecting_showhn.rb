@@ -14,24 +14,28 @@ class Showhn
       end
 
       def collect_links(entries)
-        entries = clean_up_entries_with_nils 
+        entries = filter_entries_with_keywords 
+        return if entries.none?
+
         entries.each do |entry| 
           title  = entry.link.title
+
           if title.downcase.match(KEYWORD)
             username, score, url = entry.user.name, entry.voting.score, entry.link.href  
-            return if username.nil?
-            if  Link.exists?(title: title)
-                update_link(title,score)
-            else
-              #person = find_or_create_person(username) 
-              Link.create!(title: title, hnscore: score, url: url, created_at: entry.time, hnuser: username)
-            end
-          end
+            person = find_or_create_person(username) 
+            person.links.create!(title: title, hnscore: score, url: url, created_at: entry.time, hnuser: username) unless Link.exists?(url: url) or Link.exists?(title: title)
+          end 
+
+          sleep 2
+            #if  Link.exists?(url: url)
+            #   update_link(title,score)
+            #else
+
         end
       end
 
-      def clean_up_entries_with_nils
-        Entry.all(10).delete_if{|m| m.user.name.nil? or m.voting.score.nil? }
+      def filter_entries_with_keywords
+        Entry.all(10).find_all{|entry| entry.link.title.match(KEYWORD)}.delete_if{|entry| entry.user.name.nil? or m.voting.score.nil? }
       end
 
       def update_link(title,score)
