@@ -29,7 +29,7 @@ class Link < ActiveRecord::Base
                                 :url         => actual_link,
                                 :created_at  => entry.time)
           else
-            link = Link.find_by_title(entry_title)
+            link = Link.find_by_url(actual_link)
             link.update_attributes(hnscore: entry_vote)
           end
         end
