@@ -22,12 +22,12 @@ class Link < ActiveRecord::Base
           actual_link      = entry_link.include?('http') ? entry_link : ("http://news.ycombinator.com/"+entry_link)
           entry_title      = entry.link.title
           entry_vote       = entry.voting.score
-          unless Link.exists?(:title => entry_title)
-                link = Link.create!(:title       => entry_title ,
-                                    :hnscore     => entry_vote,
-                                    :hnuser      => entry.user.name,
-                                    :url         => actual_link,
-                                    :created_at  => entry.time)
+          unless Link.exists?(:title => entry_title) or Link.exists?(url: actual_link)
+            link = Link.create!(:title       => entry_title ,
+                                :hnscore     => entry_vote,
+                                :hnuser      => entry.user.name,
+                                :url         => actual_link,
+                                :created_at  => entry.time)
           else
             link = Link.find_by_title(entry_title)
             link.update_attributes(hnscore: entry_vote)
