@@ -11,7 +11,7 @@ class Collect
       
       def update_links
         
-        entries = Entry.all(8) # will return 10 pages hn_news
+        entries = Entry.all(8) # will return * pages hn_news
         x,y = filter_entries(entries)
         update_keyword_links(x)
         update_top_links(y)
