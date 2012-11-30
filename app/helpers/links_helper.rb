@@ -32,7 +32,7 @@ module LinksHelper
   def link_title(link)
     title          = link.title                           
     title_downcase = title.downcase
-    better_title=raw(if title_downcase.match(/(show hn|(python|ruby))/)
+    better_title=raw(if title_downcase.match(/(show hn|(python|ruby|rails))/)
                         "<span id='title_highlight'>" + "#{ link_to title, link.url}" + "</span>"
                      else
                         "#{link_to title, link.url}"

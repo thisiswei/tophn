@@ -11,16 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121124102910) do
+ActiveRecord::Schema.define(:version => 20121129073944) do
 
   create_table "links", :force => true do |t|
     t.string   "title"
     t.string   "url"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
     t.integer  "hnscore"
     t.string   "hnuser"
     t.integer  "person_id"
+    t.datetime "hn_created_at"
+    t.string   "kind"
   end
 
   create_table "people", :force => true do |t|
