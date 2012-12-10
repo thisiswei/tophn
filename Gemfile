@@ -6,6 +6,7 @@ gem 'devise'
 gem 'will_paginate', '~> 3.0'
 gem 'thin'
 gem 'newrelic_rpm'
+gem "taps", "~> 0.3.24"
 
 group:development do 
   gem 'sqlite3'

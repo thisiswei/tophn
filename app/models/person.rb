@@ -4,7 +4,6 @@ class Person < ActiveRecord::Base
   validates_uniqueness_of :hn_username
   validates_presence_of :hn_username
   before_create  :fill_in_about
-  after_create   :update_status
   
 
 

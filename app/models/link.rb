@@ -9,5 +9,7 @@ class Link < ActiveRecord::Base
   validates :url, :uniqueness => true 
   validates :url,:title, :presence => {:message => 'what the heck ?'}
   
-            
+  def self.expired?
+    Link.where('kind=?','top').order('created_at desc').first.try(:created_at) > 1.hour.ago
+  end
 end
